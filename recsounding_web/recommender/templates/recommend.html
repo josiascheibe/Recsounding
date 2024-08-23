@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Recommend - Recsounding{% endblock %}
+
+{% block content %}
+<h2>Recommendations</h2>
+{% if recommendations %}
+<ul class="recommendations">
+    {% for song in recommendations %}
+    <li>
+        <strong>{{ song.title }}</strong> by {{ song.artist }} <br>
+        <em>Genre:</em> {{ song.genre }} <br>
+        <em>Release Date:</em> {{ song.release_date }} <br>
+        <a href="{{ song.url }}" target="_blank">Listen</a>
+    </li>
+    {% endfor %}
+</ul>
+<div class="pagination">
+    <span class="step-links">
+        {% if recommendations.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ recommendations.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ recommendations.number }} of {{ recommendations.paginator.num_pages }}.
+        </span>
+
+        {% if recommendations.has_next %}
+        <a href="?page={{ recommendations.next_page_number }}">next</a>
+        <a href="?page={{ recommendations.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% else %}
+<p>No recommendations available at the moment.</p>
+{% endif %}
+{% endblock %}

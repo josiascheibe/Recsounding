@@ -1,0 +1,1 @@
+#É usado para indicar que um diretorio deve ser tratado como um pacote Python. É executado quando o pacote é importado e pode ser usado para importar funções ou classes de módulos dentro do pacote

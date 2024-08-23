@@ -1,0 +1,61 @@
+<!-- Templates no django são usados pra definir a estrutura e o layout das paginas HTML do aplicativo.-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Recsounding{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <header>
+        <h1>Recsounding</h1>
+        <nav>
+            <ul>
+                <li class="{% if request.path == '/' %}active{% endif %}"><a href="{% url 'index' %}">Home</a></li>
+                <li class="{% if request.path == '/recommend/' %} active {% endif %}"><a
+                        href="{% url 'recommend' %}">Recommend</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Recsounding</p>
+    </footer>
+</body>
+
+</html>
+
+
+<!-- 
+
+Linguagem de templates do Django usadas para inserir logica e variaveis nos templates HTML
+
+Tags '{%%}'
+Usadas para lógica de controle.
+
+1. extensão de templates: Usados para criar templates que herdam de um template base
+
+2. blocos: definem seções que os templates filhos podem substituir
+
+3. Loops: iteram sobre listas de itens
+
+4. Condicionais Usados para executar código baseado em condições
+
+
+Variaveis '{{}}'
+Usadas para inserir valores de variaveis no template.
+-->

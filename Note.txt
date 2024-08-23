@@ -1,0 +1,8 @@
+Parei na parte de configurar e saber mais sobre
+
+
+initial_data.py
+tasks.py
+etc...
+
+e mais sobre as outras coisas do apps.py
